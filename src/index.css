@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  button {
+    @apply bg-black text-white font-bold py-2 px-4 rounded-xl border-2 border-white;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    @apply text-white;
+  }
+  .heading {
+    @apply text-2xl font-bold;
+  }
+
+  .subheading {
+    @apply text-xl font-bold;
+  }
+
+  .text {
+    @apply text-lg;
+  }
+}
+
+* {
+  color: white;
+}
+
+body {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: black;
+}
+
+.login-bg {
+  background-image: url("https://wallpapers.com/images/high/tea-party-background-tgslum7svrdtoeyf.webp");
+  z-index: -1;
+  opacity: 0.2;
+}
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: black;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  background-color: black;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.44, rgb(122, 153, 217)),
+    color-stop(0.72, rgb(73, 125, 189)),
+    color-stop(0.86, rgb(28, 58, 148))
+  );
+}
