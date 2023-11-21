@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [formState, setFormState] = useState({
@@ -67,9 +68,11 @@ export default function Login() {
                 placeholder="OTP"
                 className="border-[1px] p-2 rounded-md"
               />
-              <button type="submit" className="btn">
-                Authenticate
-              </button>
+              <Link to={"/home"}>
+                <button type="submit" className="btn">
+                  Authenticate
+                </button>
+              </Link>
             </div>
           </form>
         )}
