@@ -8,21 +8,12 @@ import jakarta.persistence.Id;
 public class user {
 
 	@Id
-	@GeneratedValue
-	int uid;
 	String voterid;
 	int wardno;
 	String name;
 	String email;
 	
-	public int getUid() {
-		return uid;
-	}
-
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
+	
 	public String getVoterid() {
 		return voterid;
 	}
@@ -57,13 +48,12 @@ public class user {
 
 	@Override
 	public String toString() {
-		return "user [uid=" + uid + ", voterid=" + voterid + ", wardno=" + wardno + ", name=" + name + ", email="
+		return "user voterid=" + voterid + ", wardno=" + wardno + ", name=" + name + ", email="
 				+ email + "]";
 	}
 
-	public user(int uid, String voterid, int wardno, String name, String email) {
+	public user(String voterid, int wardno, String name, String email) {
 		super();
-		this.uid = uid;
 		this.voterid = voterid;
 		this.wardno = wardno;
 		this.name = name;

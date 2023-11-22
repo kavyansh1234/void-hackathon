@@ -28,7 +28,7 @@ public class emailserviceimple implements emailservice {
 		mailsender.send(msg);
 		System.out.println("mail sent successsfully");
 		// TODO Auto-generated method stub
-		return null;
+		return "mail sent successsfully";
 	}
 	
 

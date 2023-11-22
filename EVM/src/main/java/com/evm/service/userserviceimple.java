@@ -17,34 +17,11 @@ public class userserviceimple implements userservice {
 	}
 
 	@Override
-	public String userregistration(user ur) {
-		ures.save(ur);
+	public user checkvoter(user ur) {
+		
 		// TODO Auto-generated method stub
-		return null;
+		return ures.findById(ur.getVoterid()).get();
 	}
 
-	@Override
-	public user getuserdata(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int userlogin(user ur) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<user> getalluserdata() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int checkaadharandvoter(user ur) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 }
