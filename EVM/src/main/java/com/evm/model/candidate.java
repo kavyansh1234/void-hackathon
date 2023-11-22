@@ -13,6 +13,13 @@ public class candidate {
 	String party;
 	String sybmol;
 	String wardno;
+	int count;
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getCid() {
 		return cid;
 	}
@@ -47,18 +54,20 @@ public class candidate {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public candidate(int cid, String name, String party, String sybmol, String wardno) {
+	
+	@Override
+	public String toString() {
+		return "candidate [cid=" + cid + ", name=" + name + ", party=" + party + ", sybmol=" + sybmol + ", wardno="
+				+ wardno + ", count=" + count + "]";
+	}
+	public candidate(int cid, String name, String party, String sybmol, String wardno, int count) {
 		super();
 		this.cid = cid;
 		this.name = name;
 		this.party = party;
 		this.sybmol = sybmol;
 		this.wardno = wardno;
-	}
-	@Override
-	public String toString() {
-		return "candidate [cid=" + cid + ", name=" + name + ", party=" + party + ", sybmol=" + sybmol + ", wardno="
-				+ wardno + "]";
+		this.count = count;
 	}
 	
 

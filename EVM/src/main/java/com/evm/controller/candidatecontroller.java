@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.evm.model.candidate;
 import com.evm.model.email;
 import com.evm.model.user;
+import com.evm.service.candidateservice;
 import com.evm.service.emailservice;
 import com.evm.service.userservice;
 
@@ -20,44 +22,36 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/user")
+@RequestMapping("/api/candidate")
 
 
-public class usercontroller {
-userservice uservice;
-emailservice ems;
-	
+public class candidatecontroller {
+candidateservice ures;	
 
 	
-	public usercontroller(userservice uservice, emailservice ems) {
+	public candidatecontroller(candidateservice uservice) {
 	super();
-	this.uservice = uservice;
-	this.ems = ems;
+	this.ures = uservice;
 }
 
 
-
-	@RequestMapping(path = "registration")
-//	@PostMapping
-	public int userregistration(@RequestBody user ur)
+@RequestMapping("getall")
+@GetMapping	
+	public List<candidate> getallcandidate()
 	{int x=0;
-	System.out.println(ur);
-	user urw=uservice.checkvoter(ur);
-		System.out.println();
-		if(urw!=null)
-		{	email em=new email();
-		em.setTouser(urw.getEmail());
-		em.setBody("Dear user, the OTP for loging into your account with the voter helpline is 6783, as on Date: 22/11/2023. If it wasn't you trying to login, let us know at - \n https://eci.gov.in/contact-us/ngsp/national-grievance-services-portal-r3/\r\n"
-				+ "Regards.\r\n"
-				+ "ECI");
-		em.setSubject("Election Commission");
-		
-		System.out.println(ems.otp(em));
-			x=1;
-		}
-		return x;
+	List<candidate> lt=ures.getallcanadidatedata();
+	//System.out.println(ur);
+		return lt;
 	}
+	@RequestMapping(path = "vote")
+	@PostMapping
+	 public int countincre(@RequestBody candidate cs )
+ {
 	
+		//System.out.println(ures.countincrement());
+		
+	return 0;
+ }
 	
 	
 	
