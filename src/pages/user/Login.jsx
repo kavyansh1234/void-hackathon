@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [formState, setFormState] = useState({
-    voterId: "",
+    voterid: "",
     otp: "",
   });
   const [isVoterIdSubmitted, setIsVoterIdSubmitted] = useState(false);
@@ -15,12 +16,32 @@ export default function Login() {
     }));
   };
 
-  const handleSubmitVoterId = (e) => {
+  const handleSubmitVoterId = async (e) => {
     e.preventDefault();
-    // You might want to add logic here to validate the voterId
-    console.log("Voter ID submitted with data:", formState.voterId);
-    setIsVoterIdSubmitted(true);
-    // Here you can also add logic to fetch the OTP
+
+    try {
+      const response = await fetch('http://localhost:8080/api/user/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          voterid: formState.voterid,
+        }),
+      });
+
+      if (response.ok) {
+        setIsVoterIdSubmitted(true);
+        let otp = document.getElementById("otp");
+        otp.value="";  
+        // You can add logic here to fetch the OTP if needed
+      } else {
+        // Handle error scenarios
+        console.error('Failed to submit Voter ID');
+      }
+    } catch (error) {
+      console.error('Error submitting Voter ID:', error);
+    }
   };
 
   const handleSubmitOtp = (e) => {
@@ -37,15 +58,15 @@ export default function Login() {
         {!isVoterIdSubmitted ? (
           <form onSubmit={handleSubmitVoterId} className="mt-10 w-[400px]">
             <div className="flex flex-col gap-3">
-              <label htmlFor="voterId" className="font-semibold text-white">
+              <label htmlFor="voterid" className="font-semibold text-white">
                 Voter ID
               </label>
               <input
                 onChange={handleInputChange}
                 type="text"
-                name="voterId"
+                name="voterid"
                 placeholder="Voter ID"
-                className="border-[1px] p-2 rounded-md"
+                className="border-[1px] p-2 rounded-md text-black"
               />
 
               <button type="submit" className="btn">
@@ -64,12 +85,15 @@ export default function Login() {
                 onChange={handleInputChange}
                 type="text"
                 name="otp"
+                id="otp"
                 placeholder="OTP"
-                className="border-[1px] p-2 rounded-md"
+                className="border-[1px] p-2 rounded-md text-black"
               />
-              <button type="submit" className="btn">
-                Authenticate
-              </button>
+              <Link to={"/home"}>
+                <button type="submit" className="btn">
+                  Authenticate
+                </button>
+              </Link>
             </div>
           </form>
         )}
